@@ -21,3 +21,13 @@ services:
     image: "selenium/standalone-firefox${MOODLE_DOCKER_SELENIUM_SUFFIX:-}:${MOODLE_DOCKER_BROWSER_TAG}"
     volumes:
       - "${MOODLE_DOCKER_WWWROOT}:/var/www/html:ro"
+  sqllrs:
+    image: yetanalytics/lrsql:latest
+    ports:
+      - "8080:8080"
+    environment:
+      LRSQL_API_KEY_DEFAULT: username
+      LRSQL_API_SECRET_DEFAULT: password
+      LRSQL_ADMIN_USER_DEFAULT: username
+      LRSQL_ADMIN_PASS_DEFAULT: password
+      LRSQL_ALLOW_ALL_ORIGINS: true
